@@ -208,11 +208,76 @@ h1,h2,h3,h4,h5 { font-family: var(--font-head); font-weight: 600; line-height: 1
 .nav-logo-mark {
   width: 36px; height: 36px;
 }
-.nav-logo span { color: var(--teal); }
 .nav-logo img {
   background: transparent;
   mix-blend-mode: normal;
 }
+.nav-logo-image {
+  height: 52px;
+  width: auto;
+  max-width: 240px;
+  object-fit: contain;
+}
+.brand-lockup {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.9rem;
+  color: var(--white);
+}
+.brand-mark {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: visible;
+  flex: 0 0 auto;
+}
+.brand-mark img {
+  width: auto;
+  height: 145%;
+  max-width: none;
+  object-fit: contain;
+  filter: none;
+}
+.brand-divider {
+  width: 1px;
+  height: 3.4rem;
+  background: linear-gradient(180deg, transparent, var(--teal), transparent);
+  box-shadow: none;
+  flex: 0 0 auto;
+}
+.brand-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  line-height: 1;
+}
+.brand-title {
+  font-family: var(--font-head);
+  font-weight: 700;
+  font-size: 1.45rem;
+  letter-spacing: 0.22em;
+  color: var(--white);
+  white-space: nowrap;
+}
+.brand-title-accent { color: var(--teal); }
+.brand-subtitle {
+  margin-top: 0.5rem;
+  font-family: var(--font-head);
+  font-size: 0.55rem;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--teal);
+  white-space: nowrap;
+}
+.nav-brand { gap: 0.55rem; }
+.nav-brand .brand-mark { width: 44px; height: 44px; }
+.nav-brand .brand-divider { height: 2.6rem; }
+.nav-brand .brand-title { font-size: 1rem; letter-spacing: 0.16em; }
+.nav-brand .brand-subtitle { display: none; }
 .nav-links { display: flex; align-items: center; gap: 2rem; }
 .nav-links a {
   font-size: 0.85rem;
@@ -307,7 +372,7 @@ h1,h2,h3,h4,h5 { font-family: var(--font-head); font-weight: 600; line-height: 1
 }
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 .logo-svg-wrap {
-  width: 280px; height: 280px;
+  width: 360px; height: 280px;
   display: flex; align-items: center; justify-content: center;
   position: relative;
 }
@@ -315,13 +380,23 @@ h1,h2,h3,h4,h5 { font-family: var(--font-head); font-weight: 600; line-height: 1
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(29,165,177,0.15) 0%, transparent 65%);
+  display: none;
 }
 .logo-hero-svg {
-  width: 180px; height: auto;
-  filter: drop-shadow(0 0 24px rgba(29,165,177,0.35));
+  width: 360px; height: auto;
+  filter: none;
   animation: float 6s ease-in-out infinite;
 }
+.hero-brand {
+  position: relative;
+  z-index: 2;
+  filter: none;
+  animation: float 6s ease-in-out infinite;
+}
+.hero-brand .brand-mark { width: 140px; height: 140px; }
+.hero-brand .brand-divider { height: 8.8rem; }
+.hero-brand .brand-title { font-size: 2.25rem; letter-spacing: 0.2em; }
+.hero-brand .brand-subtitle { font-size: 0.72rem; letter-spacing: 0.27em; }
 @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
 
 /* =============================================
@@ -528,6 +603,10 @@ footer {
   padding: 3.5rem 0 2rem;
 }
 .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand-logo .brand-mark { width: 48px; height: 48px; }
+.footer-brand-logo .brand-divider { height: 2.8rem; }
+.footer-brand-logo .brand-title { font-size: 1rem; letter-spacing: 0.16em; }
+.footer-brand-logo .brand-subtitle { font-size: 0.34rem; letter-spacing: 0.22em; margin-top: 0.35rem; }
 .footer-brand-desc { font-size: 0.85rem; color: rgba(242,242,242,0.45); line-height: 1.65; margin-top: 1rem; max-width: 260px; }
 .footer-col-title { font-family: var(--font-head); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
 .footer-links a { display: block; font-size: 0.85rem; color: rgba(242,242,242,0.5); padding: 0.25rem 0; transition: color 0.2s; }
@@ -638,12 +717,19 @@ textarea.form-input { resize: vertical; min-height: 120px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .about-grid { grid-template-columns: 1fr; gap: 3rem; }
   .contact-grid { grid-template-columns: 1fr; }
+  .logo-svg-wrap { width: 320px; }
+  .hero-brand .brand-mark { width: 110px; height: 110px; }
+  .hero-brand .brand-divider { height: 7rem; }
+  .hero-brand .brand-title { font-size: 1.75rem; }
+  .hero-brand .brand-subtitle { font-size: 0.58rem; }
 }
 @media (max-width: 768px) {
   .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .nav-links, .nav-actions { display: none; }
   .hamburger { display: flex; }
+  .nav-logo-image { height: 46px; max-width: 220px; }
+  .nav-brand .brand-title { font-size: 0.9rem; letter-spacing: 0.13em; }
   #hero { padding-top: 6rem; }
   .hero-visual { display: none; }
   .t-display { font-size: 2.5rem; }
@@ -655,6 +741,11 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 @media (max-width: 480px) {
   .footer-grid { grid-template-columns: 1fr; }
   .about-numbers { grid-template-columns: 1fr 1fr; }
+  .nav-brand { gap: 0.4rem; }
+  .nav-logo-image { height: 40px; max-width: 180px; }
+  .nav-brand .brand-mark { width: 38px; height: 38px; }
+  .nav-brand .brand-divider { height: 2.2rem; }
+  .nav-brand .brand-title { font-size: 0.78rem; letter-spacing: 0.1em; }
 }
 
 /* =============================================
@@ -711,7 +802,9 @@ textarea.form-input { resize: vertical; min-height: 120px; }
 <nav id="nav">
   <div class="container">
     <div class="nav-inner">
-      <a href="#hero" class="nav-logo" style="padding:0;"><img src="mictlanlogo.png" alt="MICTLÁN IA" style="height:46px;width:auto;object-fit:contain;" /></a>
+      <a href="#hero" class="nav-logo" style="padding:0;" aria-label="MICTLÁN IA">
+        <img src="logonavegacion.png" alt="MICTLÁN IA" class="nav-logo-image">
+      </a>
       <div class="nav-links">
         <a href="#sectores">Sectores</a>
         <a href="#soluciones">Soluciones</a>
@@ -746,7 +839,7 @@ textarea.form-input { resize: vertical; min-height: 120px; }
   <div class="container">
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
       <div class="hero-content">
-        <div class="hero-badge reveal">IA Aplicada · México · 2024</div>
+        <div class="hero-badge reveal">IA Aplicada · México · 2026</div>
         <h1 class="t-display hero-title reveal reveal-delay-1">
           <span class="brand">MICTLÁN <span class="t-teal">IA</span></span>
           Soluciones inteligentes que transforman realidades
@@ -779,8 +872,7 @@ textarea.form-input { resize: vertical; min-height: 120px; }
           </div>
           <div class="logo-svg-wrap">
             <div class="logo-inner-glow"></div>
-            <!-- Portal logo SVG recreated from brand image -->
-<img src="mictlanlogo.png" alt="MICTLÁN IA Logo" class="logo-hero-svg" style="width:220px;height:auto;filter:drop-shadow(0 0 28px rgba(29,165,177,0.45));animation:float 6s ease-in-out infinite;" />
+            <img src="mictlanlogo.png" alt="MICTLÁN IA Logo" class="logo-hero-svg">
           </div>
         </div>
       </div>
@@ -1073,7 +1165,7 @@ textarea.form-input { resize: vertical; min-height: 120px; }
       </div>
       <div class="lab-item">
         <div class="lab-category">Artículos</div>
-        <div class="lab-item-title">IA en México: estado actual 2025</div>
+        <div class="lab-item-title">IA en México: estado actual 2026</div>
         <div class="lab-item-desc">Panorama de adopción IA en empresas e instituciones mexicanas</div>
         <div class="lab-arrow">→ Leer artículo</div>
       </div>
@@ -1275,7 +1367,14 @@ textarea.form-input { resize: vertical; min-height: 120px; }
     <div class="footer-grid">
       <div>
         <div style="margin-bottom:0.75rem;">
-          <img src="mictlanlogo.png" alt="MICTLÁN IA" style="height:42px;width:auto;object-fit:contain;" />
+          <div class="brand-lockup footer-brand-logo" aria-label="MICTLÁN IA">
+            <span class="brand-mark" aria-hidden="true"><img src="mictlanlogo.png" alt=""></span>
+            <span class="brand-divider" aria-hidden="true"></span>
+            <span class="brand-copy">
+              <span class="brand-title">MICTLÁN <span class="brand-title-accent">IA</span></span>
+              <span class="brand-subtitle">Soluciones inteligentes<br>que transforman realidades</span>
+            </span>
+          </div>
         </div>
         <p class="footer-brand-desc">Soluciones inteligentes que transforman realidades. Inteligencia artificial aplicada para educación, negocios, industria y organizaciones en México.</p>
       </div>
