@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="MICTLÁN IA — Soluciones inteligentes que transforman realidades. Automatización, chatbots, sitios web con IA, capacitaciones y transformación digital.">
+<meta name="keywords" content="inteligencia artificial, chatbots, automatización, transformación digital, IA México, capacitación IA">
+<meta property="og:title" content="MICTLÁN IA — Soluciones inteligentes que transforman realidades">
+<meta property="og:description" content="Diseñamos soluciones con inteligencia artificial para automatizar, optimizar y resolver desafíos en educación, negocios, industria y organizaciones.">
+<title>MICTLÁN IA — Soluciones inteligentes que transforman realidades</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* =============================================
+   DESIGN TOKENS — MICTLÁN IA
+   ============================================= */
+:root {
+  --black:    #0B0F14;
+  --navy:     #0F3D48;
+  --teal:     #1DA5B1;
+  --teal-dim: #14737c;
+  --teal-glow:#1DA5B1;
+  --white:    #F2F2F2;
+  --gray:     #77838C;
+  --gray-dim: #3a4a54;
+  --font-head: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+  --radius:    12px;
+  --radius-lg: 20px;
+  --wa: #25D366;
+}
+
+/* =============================================
+   RESET & BASE
+   ============================================= */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-body);
+  background: var(--black);
+  color: var(--white);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: var(--font-body); }
+ul { list-style: none; }
+::selection { background: var(--teal); color: var(--black); }
+
+/* =============================================
+   SCROLLBAR
+   ============================================= */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--black); }
+::-webkit-scrollbar-thumb { background: var(--navy); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--teal-dim); }
+
+/* =============================================
+   TYPOGRAPHY
+   ============================================= */
+h1,h2,h3,h4,h5 { font-family: var(--font-head); font-weight: 600; line-height: 1.2; }
+.t-eyebrow {
+  font-family: var(--font-head);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+.t-display {
+  font-size: clamp(2.8rem, 6vw, 5.2rem);
+  font-weight: 700;
+  font-family: var(--font-head);
+  line-height: 1.05;
+}
+.t-h2 { font-size: clamp(1.9rem, 3.5vw, 2.8rem); }
+.t-h3 { font-size: clamp(1.3rem, 2vw, 1.6rem); }
+.t-lead { font-size: 1.1rem; line-height: 1.75; color: rgba(242,242,242,0.7); }
+.t-teal { color: var(--teal); }
+.t-muted { color: rgba(242,242,242,0.5); font-size: 0.875rem; }
+
+/* =============================================
+   LAYOUT
+   ============================================= */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+.section { padding: 7rem 0; }
+.section-sm { padding: 4rem 0; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.5rem; }
+.grid-5 { display: grid; grid-template-columns: repeat(5,1fr); gap: 1.25rem; }
+.flex { display: flex; }
+.flex-center { display: flex; align-items: center; justify-content: center; }
+.flex-between { display: flex; align-items: center; justify-content: space-between; }
+.gap-1 { gap: 0.5rem; } .gap-2 { gap: 1rem; } .gap-3 { gap: 1.5rem; }
+.text-center { text-align: center; }
+
+/* =============================================
+   BUTTONS
+   ============================================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.75rem;
+  border-radius: 50px;
+  font-family: var(--font-head);
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  border: none;
+  transition: all 0.28s cubic-bezier(0.4,0,0.2,1);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.btn-primary {
+  background: var(--teal);
+  color: var(--black);
+}
+.btn-primary:hover { background: #22bfcc; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(29,165,177,0.4); }
+.btn-outline {
+  background: transparent;
+  color: var(--white);
+  border: 1.5px solid rgba(242,242,242,0.25);
+}
+.btn-outline:hover { border-color: var(--teal); color: var(--teal); transform: translateY(-2px); }
+.btn-wa {
+  background: var(--wa);
+  color: #fff;
+}
+.btn-wa:hover { background: #20c05c; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(37,211,102,0.4); }
+.btn-sm { padding: 0.5rem 1.2rem; font-size: 0.8rem; }
+
+/* =============================================
+   CARDS
+   ============================================= */
+.card {
+  background: rgba(15,61,72,0.25);
+  border: 1px solid rgba(29,165,177,0.12);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: all 0.32s cubic-bezier(0.4,0,0.2,1);
+  position: relative;
+  overflow: hidden;
+}
+.card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(29,165,177,0.06) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.32s;
+}
+.card:hover { border-color: rgba(29,165,177,0.35); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(29,165,177,0.12); }
+.card:hover::before { opacity: 1; }
+.card-icon {
+  width: 48px; height: 48px;
+  background: rgba(29,165,177,0.12);
+  border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 1.25rem;
+  font-size: 1.4rem;
+  color: var(--teal);
+}
+
+/* =============================================
+   DIVIDER LINE
+   ============================================= */
+.teal-line {
+  display: block;
+  width: 48px; height: 2px;
+  background: var(--teal);
+  border-radius: 2px;
+}
+.section-label {
+  display: flex; align-items: center; gap: 0.75rem; margin-bottom: 1.25rem;
+}
+
+/* =============================================
+   GLOW DECORATIONS
+   ============================================= */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,165,177,0.18) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* =============================================
+   NAV
+   ============================================= */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+  padding: 0.9rem 0;
+  transition: all 0.3s;
+}
+#nav.scrolled {
+  background: rgba(11,15,20,0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(29,165,177,0.12);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; }
+.nav-logo {
+  display: flex; align-items: center; gap: 0.65rem;
+  font-family: var(--font-head); font-weight: 700; font-size: 1.2rem;
+}
+.nav-logo-mark {
+  width: 36px; height: 36px;
+}
+.nav-logo span { color: var(--teal); }
+.nav-logo img {
+  background: transparent;
+  mix-blend-mode: normal;
+}
+.nav-links { display: flex; align-items: center; gap: 2rem; }
+.nav-links a {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgba(242,242,242,0.7);
+  transition: color 0.2s;
+  position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -3px; left: 0; right: 100%; height: 1px;
+  background: var(--teal); transition: right 0.3s;
+}
+.nav-links a:hover { color: var(--white); }
+.nav-links a:hover::after { right: 0; }
+.nav-actions { display: flex; align-items: center; gap: 0.75rem; }
+.hamburger { display: none; background: none; border: none; color: var(--white); font-size: 1.5rem; }
+.mobile-menu {
+  display: none; flex-direction: column; gap: 1rem;
+  position: absolute; top: 100%; left: 0; right: 0;
+  background: rgba(11,15,20,0.97);
+  backdrop-filter: blur(20px);
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(29,165,177,0.15);
+}
+.mobile-menu.open { display: flex; }
+.mobile-menu a { font-size: 1rem; padding: 0.35rem 0; color: rgba(242,242,242,0.75); }
+
+/* =============================================
+   HERO
+   ============================================= */
+#hero {
+  min-height: 100vh;
+  display: flex; align-items: center;
+  position: relative;
+  padding: 8rem 0 5rem;
+  overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 40%, rgba(29,165,177,0.08) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 50% at 20% 80%, rgba(15,61,72,0.4) 0%, transparent 60%);
+}
+.hero-grid-lines {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image:
+    linear-gradient(rgba(29,165,177,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(29,165,177,0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 0%, transparent 100%);
+}
+.hero-content { position: relative; z-index: 2; }
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(29,165,177,0.1);
+  border: 1px solid rgba(29,165,177,0.25);
+  border-radius: 50px;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--teal);
+  margin-bottom: 1.75rem;
+}
+.hero-badge::before { content: '●'; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+.hero-title { margin-bottom: 1.5rem; }
+.hero-title .brand { display: block; }
+.hero-sectors {
+  display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 2rem;
+}
+.hero-sector-tag {
+  font-size: 0.75rem; font-weight: 600; letter-spacing: 0.06em;
+  color: rgba(242,242,242,0.5);
+  padding: 0.3rem 0.8rem;
+  border: 1px solid rgba(242,242,242,0.1);
+  border-radius: 50px;
+}
+.hero-ctas { display: flex; flex-wrap: wrap; gap: 0.875rem; margin-top: 2.5rem; }
+.hero-visual {
+  position: relative; z-index: 2;
+  display: flex; align-items: center; justify-content: center;
+}
+.logo-display {
+  position: relative;
+}
+.logo-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(29,165,177,0.12);
+  animation: spin-slow linear infinite;
+}
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.logo-svg-wrap {
+  width: 280px; height: 280px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+}
+.logo-inner-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,165,177,0.15) 0%, transparent 65%);
+}
+.logo-hero-svg {
+  width: 180px; height: auto;
+  filter: drop-shadow(0 0 24px rgba(29,165,177,0.35));
+  animation: float 6s ease-in-out infinite;
+}
+@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-12px)} }
+
+/* =============================================
+   SECTORS
+   ============================================= */
+#sectores { padding: 3rem 0 6rem; }
+.sector-card {
+  background: rgba(15,61,72,0.15);
+  border: 1px solid rgba(29,165,177,0.1);
+  border-radius: var(--radius);
+  padding: 1.75rem;
+  transition: all 0.3s;
+  text-align: center;
+}
+.sector-card:hover { border-color: var(--teal); background: rgba(29,165,177,0.07); transform: translateY(-3px); }
+.sector-icon { font-size: 2rem; margin-bottom: 0.75rem; }
+.sector-title { font-family: var(--font-head); font-size: 0.95rem; font-weight: 600; }
+.sector-desc { font-size: 0.8rem; color: rgba(242,242,242,0.5); margin-top: 0.35rem; }
+
+/* =============================================
+   SOLUTIONS
+   ============================================= */
+.sol-card {
+  background: rgba(11,15,20,0.6);
+  border: 1px solid rgba(29,165,177,0.1);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  display: flex; flex-direction: column;
+  transition: all 0.32s;
+  position: relative; overflow: hidden;
+}
+.sol-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), transparent);
+  opacity: 0; transition: opacity 0.3s;
+}
+.sol-card:hover { border-color: rgba(29,165,177,0.3); transform: translateY(-5px); box-shadow: 0 20px 60px rgba(29,165,177,0.1); }
+.sol-card:hover::after { opacity: 1; }
+.sol-tag {
+  display: inline-block;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em;
+  background: rgba(29,165,177,0.12);
+  color: var(--teal);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.sol-title { font-family: var(--font-head); font-size: 1.2rem; font-weight: 600; margin-bottom: 0.75rem; }
+.sol-desc { font-size: 0.875rem; color: rgba(242,242,242,0.6); line-height: 1.65; flex: 1; }
+.sol-benefit { margin-top: 1.25rem; padding-top: 1.25rem; border-top: 1px solid rgba(29,165,177,0.1); }
+.sol-benefit-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; color: var(--teal); margin-bottom: 0.3rem; }
+.sol-benefit-text { font-size: 0.85rem; color: rgba(242,242,242,0.7); }
+.sol-cta { margin-top: 1.5rem; }
+
+/* =============================================
+   TRAINING
+   ============================================= */
+.training-card {
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  position: relative; overflow: hidden;
+}
+.training-card-1 { background: linear-gradient(135deg, rgba(15,61,72,0.5) 0%, rgba(29,165,177,0.08) 100%); border: 1px solid rgba(29,165,177,0.2); }
+.training-card-2 { background: linear-gradient(135deg, rgba(29,165,177,0.08) 0%, rgba(15,61,72,0.5) 100%); border: 1px solid rgba(29,165,177,0.2); }
+.training-audience {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 1rem;
+}
+.training-title { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.75rem; }
+.training-objectives { margin: 1.25rem 0; }
+.training-objectives li {
+  display: flex; align-items: flex-start; gap: 0.5rem;
+  font-size: 0.875rem; color: rgba(242,242,242,0.7);
+  padding: 0.35rem 0;
+}
+.training-objectives li::before { content: '✦'; color: var(--teal); font-size: 0.65rem; margin-top: 0.22rem; flex-shrink: 0; }
+.training-modalities { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0 1.5rem; }
+.modality-tag {
+  font-size: 0.75rem; font-weight: 500;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid rgba(29,165,177,0.25);
+  border-radius: 50px;
+  color: rgba(242,242,242,0.65);
+}
+
+/* =============================================
+   PROJECTS
+   ============================================= */
+.project-card {
+  background: rgba(15,61,72,0.2);
+  border: 1px solid rgba(29,165,177,0.1);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all 0.32s;
+}
+.project-card:hover { border-color: rgba(29,165,177,0.3); transform: translateY(-4px); }
+.project-header {
+  padding: 2rem;
+  background: linear-gradient(135deg, rgba(15,61,72,0.4), rgba(29,165,177,0.06));
+  border-bottom: 1px solid rgba(29,165,177,0.1);
+}
+.project-sector {
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--teal); margin-bottom: 0.5rem;
+}
+.project-title { font-family: var(--font-head); font-size: 1.15rem; font-weight: 600; }
+.project-body { padding: 1.5rem 2rem; }
+.project-stats { display: flex; gap: 1.5rem; margin-top: 1rem; }
+.stat-item { text-align: center; }
+.stat-num { font-family: var(--font-head); font-size: 1.5rem; font-weight: 700; color: var(--teal); }
+.stat-label { font-size: 0.72rem; color: rgba(242,242,242,0.5); }
+
+/* =============================================
+   LAB
+   ============================================= */
+.lab-hero {
+  background: linear-gradient(135deg, rgba(15,61,72,0.4), rgba(29,165,177,0.06));
+  border: 1px solid rgba(29,165,177,0.15);
+  border-radius: var(--radius-lg);
+  padding: 3rem;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.lab-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1rem; }
+.lab-item {
+  background: rgba(11,15,20,0.5);
+  border: 1px solid rgba(29,165,177,0.08);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  transition: all 0.25s;
+  cursor: pointer;
+}
+.lab-item:hover { border-color: rgba(29,165,177,0.25); background: rgba(29,165,177,0.05); }
+.lab-category { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 0.35rem; }
+.lab-item-title { font-family: var(--font-head); font-size: 0.9rem; font-weight: 600; margin-bottom: 0.35rem; }
+.lab-item-desc { font-size: 0.78rem; color: rgba(242,242,242,0.5); }
+.lab-arrow { margin-top: 0.75rem; font-size: 0.75rem; color: var(--teal); }
+
+/* =============================================
+   ABOUT
+   ============================================= */
+.about-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: center; }
+.about-pillar {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(29,165,177,0.08);
+}
+.about-pillar:last-child { border-bottom: none; }
+.pillar-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: rgba(29,165,177,0.1);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.1rem; color: var(--teal);
+}
+.pillar-title { font-family: var(--font-head); font-size: 0.95rem; font-weight: 600; margin-bottom: 0.25rem; }
+.pillar-text { font-size: 0.82rem; color: rgba(242,242,242,0.55); line-height: 1.55; }
+.about-numbers { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2rem; }
+.num-card {
+  background: rgba(15,61,72,0.25);
+  border: 1px solid rgba(29,165,177,0.12);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  text-align: center;
+}
+.num-big { font-family: var(--font-head); font-size: 2.5rem; font-weight: 700; color: var(--teal); }
+.num-label { font-size: 0.78rem; color: rgba(242,242,242,0.5); margin-top: 0.25rem; }
+
+/* =============================================
+   CTA FINAL
+   ============================================= */
+#cta-final {
+  padding: 7rem 0;
+  position: relative; overflow: hidden;
+}
+.cta-inner {
+  background: linear-gradient(135deg, rgba(15,61,72,0.5), rgba(29,165,177,0.08));
+  border: 1px solid rgba(29,165,177,0.2);
+  border-radius: 28px;
+  padding: 5rem 3rem;
+  text-align: center;
+  position: relative; overflow: hidden;
+}
+.cta-inner::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -20%;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(29,165,177,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+.cta-title { font-size: clamp(1.9rem, 4vw, 3rem); margin-bottom: 1rem; }
+.cta-sub { font-size: 1rem; color: rgba(242,242,242,0.6); margin-bottom: 2.5rem; max-width: 500px; margin-left: auto; margin-right: auto; }
+
+/* =============================================
+   FOOTER
+   ============================================= */
+footer {
+  background: rgba(11,15,20,0.9);
+  border-top: 1px solid rgba(29,165,177,0.08);
+  padding: 3.5rem 0 2rem;
+}
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-brand-desc { font-size: 0.85rem; color: rgba(242,242,242,0.45); line-height: 1.65; margin-top: 1rem; max-width: 260px; }
+.footer-col-title { font-family: var(--font-head); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--teal); margin-bottom: 1rem; }
+.footer-links a { display: block; font-size: 0.85rem; color: rgba(242,242,242,0.5); padding: 0.25rem 0; transition: color 0.2s; }
+.footer-links a:hover { color: var(--teal); }
+.footer-contact a { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: rgba(242,242,242,0.5); padding: 0.3rem 0; transition: color 0.2s; }
+.footer-contact a:hover { color: var(--teal); }
+.footer-bottom {
+  border-top: 1px solid rgba(242,242,242,0.06);
+  padding-top: 1.5rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem;
+}
+.footer-legal { display: flex; gap: 1.5rem; }
+.footer-legal a { font-size: 0.75rem; color: rgba(242,242,242,0.35); }
+.footer-legal a:hover { color: rgba(242,242,242,0.65); }
+.footer-copy { font-size: 0.75rem; color: rgba(242,242,242,0.3); }
+
+/* =============================================
+   WHATSAPP FLOAT
+   ============================================= */
+.wa-float {
+  position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+  display: flex; align-items: center;
+}
+.wa-btn {
+  width: 58px; height: 58px;
+  background: var(--wa);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+  transition: all 0.3s;
+  text-decoration: none;
+  position: relative;
+}
+.wa-btn:hover { transform: scale(1.1); box-shadow: 0 6px 28px rgba(37,211,102,0.55); }
+.wa-btn svg { width: 28px; height: 28px; fill: #fff; }
+.wa-pulse {
+  position: absolute;
+  inset: -5px;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,0.3);
+  animation: wa-pulse 2.5s ease-out infinite;
+}
+@keyframes wa-pulse { 0%{transform:scale(1);opacity:1} 100%{transform:scale(1.7);opacity:0} }
+.wa-tooltip {
+  position: absolute; right: 70px;
+  background: rgba(11,15,20,0.92);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(29,165,177,0.2);
+  border-radius: 8px;
+  padding: 0.5rem 0.85rem;
+  font-size: 0.8rem; font-weight: 500;
+  white-space: nowrap;
+  opacity: 0; transform: translateX(6px);
+  transition: all 0.2s;
+  pointer-events: none;
+}
+.wa-float:hover .wa-tooltip { opacity: 1; transform: translateX(0); }
+
+/* =============================================
+   CONTACT FORM
+   ============================================= */
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start; }
+.form-group { margin-bottom: 1.25rem; }
+.form-label { display: block; font-size: 0.8rem; font-weight: 500; color: rgba(242,242,242,0.6); margin-bottom: 0.4rem; }
+.form-input {
+  width: 100%; padding: 0.75rem 1rem;
+  background: rgba(15,61,72,0.2);
+  border: 1px solid rgba(29,165,177,0.15);
+  border-radius: 8px;
+  color: var(--white);
+  font-family: var(--font-body); font-size: 0.875rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.form-input:focus { border-color: var(--teal); }
+.form-input::placeholder { color: rgba(242,242,242,0.3); }
+textarea.form-input { resize: vertical; min-height: 120px; }
+.form-select { appearance: none; }
+
+/* =============================================
+   SECTION HEADINGS
+   ============================================= */
+.section-head { margin-bottom: 3.5rem; }
+.section-head.centered { text-align: center; }
+.section-head .t-h2 { margin: 0.5rem 0 1rem; }
+.section-head p { max-width: 540px; }
+.section-head.centered p { margin: 0 auto; }
+
+/* =============================================
+   ANIMATIONS ON SCROLL
+   ============================================= */
+.reveal {
+  opacity: 0; transform: translateY(28px);
+  transition: all 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* =============================================
+   RESPONSIVE
+   ============================================= */
+@media (max-width: 1024px) {
+  .grid-4, .grid-5 { grid-template-columns: repeat(2,1fr); }
+  .grid-3 { grid-template-columns: repeat(2,1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .contact-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .grid-2, .grid-3, .grid-4, .grid-5 { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .nav-links, .nav-actions { display: none; }
+  .hamburger { display: flex; }
+  #hero { padding-top: 6rem; }
+  .hero-visual { display: none; }
+  .t-display { font-size: 2.5rem; }
+  .lab-grid { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .footer-legal { flex-wrap: wrap; justify-content: center; }
+  .cta-inner { padding: 3rem 1.5rem; }
+}
+@media (max-width: 480px) {
+  .footer-grid { grid-template-columns: 1fr; }
+  .about-numbers { grid-template-columns: 1fr 1fr; }
+}
+
+/* =============================================
+   ACTIVE NAV SECTION HIGHLIGHT
+   ============================================= */
+.nav-links a.active { color: var(--teal); }
+
+/* =============================================
+   MISC
+   ============================================= */
+.tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-size: 0.72rem; font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 50px;
+  background: rgba(29,165,177,0.1);
+  color: var(--teal);
+  border: 1px solid rgba(29,165,177,0.2);
+}
+.separator {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(29,165,177,0.2), transparent);
+  margin: 0;
+}
+.badge-new {
+  display: inline-block;
+  font-size: 0.62rem; font-weight: 700; letter-spacing: 0.08em;
+  background: var(--teal); color: var(--black);
+  padding: 0.12rem 0.45rem; border-radius: 4px;
+  vertical-align: middle; margin-left: 0.35rem;
+}
+
+/* Portal SVG logo inline */
+.portal-logo { color: var(--teal); }
+
+</style>
+</head>
+<body>
+
+<!-- =============================================
+     WHATSAPP FLOATING BUTTON
+     ============================================= -->
+<div class="wa-float">
+  <div class="wa-pulse"></div>
+  <a class="wa-btn" href="https://wa.me/5215512345678?text=Hola%2C%20me%20interesa%20una%20soluci%C3%B3n%20IA%20para%20mi%20proyecto." target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  </a>
+  <div class="wa-tooltip">¿Tienes un proyecto? Hablemos</div>
+</div>
+
+<!-- =============================================
+     NAVIGATION
+     ============================================= -->
+<nav id="nav">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" style="padding:0;"><img src="mictlanlogo.png" alt="MICTLÁN IA" style="height:46px;width:auto;object-fit:contain;" /></a>
+      <div class="nav-links">
+        <a href="#sectores">Sectores</a>
+        <a href="#soluciones">Soluciones</a>
+        <a href="#capacitaciones">Capacitaciones</a>
+        <a href="#laboratorio">Laboratorio</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+      <div class="nav-actions">
+        <a href="https://wa.me/5215512345678?text=Solicito%20informaci%C3%B3n%20sobre%20soluciones%20IA" target="_blank" class="btn btn-primary btn-sm">Solicitar solución</a>
+      </div>
+      <button class="hamburger" id="hamburger" aria-label="Menú">☰</button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#sectores">Sectores</a>
+      <a href="#soluciones">Soluciones</a>
+      <a href="#capacitaciones">Capacitaciones</a>
+      <a href="#laboratorio">Laboratorio</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+      <a href="https://wa.me/5215512345678" target="_blank" class="btn btn-primary btn-sm" style="width:fit-content">Solicitar solución</a>
+    </div>
+  </div>
+</nav>
+
+<!-- =============================================
+     HERO
+     ============================================= -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;">
+      <div class="hero-content">
+        <div class="hero-badge reveal">IA Aplicada · México · 2024</div>
+        <h1 class="t-display hero-title reveal reveal-delay-1">
+          <span class="brand">MICTLÁN <span class="t-teal">IA</span></span>
+          Soluciones inteligentes que transforman realidades
+        </h1>
+        <p class="t-lead reveal reveal-delay-2">
+          Diseñamos soluciones con inteligencia artificial para automatizar, optimizar y resolver desafíos en educación, negocios, industria y organizaciones.
+        </p>
+        <div class="hero-sectors reveal reveal-delay-3">
+          <span class="hero-sector-tag">Educación</span>
+          <span class="hero-sector-tag">Negocios</span>
+          <span class="hero-sector-tag">Industria</span>
+          <span class="hero-sector-tag">Organizaciones</span>
+        </div>
+        <div class="hero-ctas reveal reveal-delay-4">
+          <a href="https://wa.me/5215512345678?text=Quiero%20solicitar%20una%20soluci%C3%B3n%20IA" target="_blank" class="btn btn-primary">
+            <span>💬</span> Solicitar solución
+          </a>
+          <a href="#soluciones" class="btn btn-outline">Explorar proyectos</a>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="logo-display">
+          <!-- Orbit rings -->
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:360px;height:360px;border-radius:50%;border:1px solid rgba(29,165,177,0.08);"></div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:280px;height:280px;border-radius:50%;border:1px solid rgba(29,165,177,0.12);animation:spin-slow 30s linear infinite;"></div>
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;border:1px solid rgba(29,165,177,0.18);animation:spin-slow 20s linear infinite reverse;"></div>
+          <!-- Orbit dots -->
+          <div style="position:absolute;top:50%;left:50%;width:360px;height:360px;transform:translate(-50%,-50%);animation:spin-slow 30s linear infinite;">
+            <div style="position:absolute;top:-5px;left:50%;width:10px;height:10px;background:var(--teal);border-radius:50%;transform:translateX(-50%);box-shadow:0 0 12px var(--teal);"></div>
+          </div>
+          <div class="logo-svg-wrap">
+            <div class="logo-inner-glow"></div>
+            <!-- Portal logo SVG recreated from brand image -->
+<img src="mictlanlogo.png" alt="MICTLÁN IA Logo" class="logo-hero-svg" style="width:220px;height:auto;filter:drop-shadow(0 0 28px rgba(29,165,177,0.45));animation:float 6s ease-in-out infinite;" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     SECTORS
+     ============================================= -->
+<section id="sectores" class="section-sm">
+  <div class="container">
+    <div class="section-head centered reveal">
+      <p class="t-eyebrow">Dónde la IA se convierte en transformación</p>
+      <h2 class="t-h2">Impulsamos cambios reales en distintos sectores</h2>
+      <p class="t-lead" style="margin-top:0.75rem;">Diseñamos soluciones inteligentes para responder a desafíos donde la innovación impulsa transformación.</p>
+    </div>
+    <div class="grid-5 reveal reveal-delay-1">
+      <div class="sector-card">
+        <div class="sector-icon">🎓</div>
+        <div class="sector-title">Educación</div>
+        <div class="sector-desc">Aprendizaje aumentado con IA</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">📈</div>
+        <div class="sector-title">Negocios</div>
+        <div class="sector-desc">Optimización y automatización</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏭</div>
+        <div class="sector-title">Industria</div>
+        <div class="sector-desc">Procesos inteligentes</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">🏛️</div>
+        <div class="sector-title">Organizaciones</div>
+        <div class="sector-desc">Gestión eficiente con IA</div>
+      </div>
+      <div class="sector-card">
+        <div class="sector-icon">⚡</div>
+        <div class="sector-title">A la medida</div>
+        <div class="sector-desc">Soluciones personalizadas</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- =============================================
+     SOLUTIONS
+     ============================================= -->
+<section id="soluciones" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">Soluciones IA</p>
+      <h2 class="t-h2">Inteligencia artificial<br>aplicada a tu realidad</h2>
+      <p class="t-lead" style="margin-top:0.75rem;max-width:520px;">Cada solución que diseñamos nace de una necesidad real. Implementamos tecnología que entrega resultados medibles.</p>
+    </div>
+    <div class="grid-3">
+      <!-- Chatbots -->
+      <div class="sol-card reveal">
+        <span class="sol-tag">CHATBOTS IA</span>
+        <div class="card-icon" style="margin-bottom:1rem;">🤖</div>
+        <h3 class="sol-title">Chatbots inteligentes</h3>
+        <p class="sol-desc">Asistentes conversacionales que comprenden contexto, resuelven dudas y guían a tus usuarios 24/7. Integrados a WhatsApp, web o plataformas internas.</p>
+        <div class="sol-benefit">
+          <div class="sol-benefit-label">BENEFICIO PRINCIPAL</div>
+          <div class="sol-benefit-text">Hasta 80% de reducción en tiempo de atención al cliente</div>
+        </div>
+        <div class="sol-cta">
+          <a href="https://wa.me/5215512345678?text=Quiero%20un%20chatbot%20inteligente" target="_blank" class="btn btn-outline btn-sm">Quiero un chatbot →</a>
+        </div>
+      </div>
+      <!-- Automatización -->
+      <div class="sol-card reveal reveal-delay-1">
+        <span class="sol-tag">AUTOMATIZACIÓN</span>
+        <div class="card-icon" style="margin-bottom:1rem;">⚙️</div>
+        <h3 class="sol-title">Automatización de procesos</h3>
+        <p class="sol-desc">Identificamos tareas repetitivas y las automatizamos con IA. Flujos de trabajo inteligentes que liberan tiempo de tu equipo para lo que realmente importa.</p>
+        <div class="sol-benefit">
+          <div class="sol-benefit-label">BENEFICIO PRINCIPAL</div>
+          <div class="sol-benefit-text">Ahorro de hasta 30 horas semanales por equipo de trabajo</div>
+        </div>
+        <div class="sol-cta">
+          <a href="https://wa.me/5215512345678?text=Quiero%20automatizar%20mis%20procesos" target="_blank" class="btn btn-outline btn-sm">Automatizar ahora →</a>
+        </div>
+      </div>
+      <!-- Sitios web IA -->
+      <div class="sol-card reveal reveal-delay-2">
+        <span class="sol-tag">SITIOS WEB IA</span>
+        <div class="card-icon" style="margin-bottom:1rem;">🌐</div>
+        <h3 class="sol-title">Sitios web con IA integrada</h3>
+        <p class="sol-desc">Sitios web modernos potenciados con inteligencia artificial. Recomendaciones personalizadas, búsqueda semántica, chatbots y análisis inteligente del comportamiento.</p>
+        <div class="sol-benefit">
+          <div class="sol-benefit-label">BENEFICIO PRINCIPAL</div>
+          <div class="sol-benefit-text">Mayor conversión y experiencia de usuario memorable</div>
+        </div>
+        <div class="sol-cta">
+          <a href="https://wa.me/5215512345678?text=Quiero%20un%20sitio%20web%20con%20IA" target="_blank" class="btn btn-outline btn-sm">Ver posibilidades →</a>
+        </div>
+      </div>
+      <!-- Sistemas personalizados -->
+      <div class="sol-card reveal">
+        <span class="sol-tag">SISTEMAS IA</span>
+        <div class="card-icon" style="margin-bottom:1rem;">🧠</div>
+        <h3 class="sol-title">Sistemas personalizados</h3>
+        <p class="sol-desc">Desarrollamos sistemas de IA a medida para necesidades complejas: análisis de datos, modelos predictivos, procesamiento de documentos y toma de decisiones inteligente.</p>
+        <div class="sol-benefit">
+          <div class="sol-benefit-label">BENEFICIO PRINCIPAL</div>
+          <div class="sol-benefit-text">Decisiones más rápidas y precisas basadas en datos reales</div>
+        </div>
+        <div class="sol-cta">
+          <a href="https://wa.me/5215512345678?text=Necesito%20un%20sistema%20IA%20personalizado" target="_blank" class="btn btn-outline btn-sm">Diseñar sistema →</a>
+        </div>
+      </div>
+      <!-- Transformación digital -->
+      <div class="sol-card reveal reveal-delay-1">
+        <span class="sol-tag">TRANSFORMACIÓN DIGITAL</span>
+        <div class="card-icon" style="margin-bottom:1rem;">🚀</div>
+        <h3 class="sol-title">Transformación digital</h3>
+        <p class="sol-desc">Acompañamos a tu organización en el proceso completo de adopción de IA: diagnóstico, estrategia, implementación y capacitación. Transformación real, no solo tecnología.</p>
+        <div class="sol-benefit">
+          <div class="sol-benefit-label">BENEFICIO PRINCIPAL</div>
+          <div class="sol-benefit-text">Organización lista para competir en la era de la IA</div>
+        </div>
+        <div class="sol-cta">
+          <a href="https://wa.me/5215512345678?text=Quiero%20transformaci%C3%B3n%20digital%20con%20IA" target="_blank" class="btn btn-outline btn-sm">Iniciar transformación →</a>
+        </div>
+      </div>
+      <!-- CTA card -->
+      <div class="sol-card reveal reveal-delay-2" style="background:linear-gradient(135deg,rgba(29,165,177,0.12),rgba(15,61,72,0.4));border-color:rgba(29,165,177,0.25);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+        <div style="font-size:2.5rem;margin-bottom:1rem;">✦</div>
+        <h3 class="sol-title">¿Tienes un desafío específico?</h3>
+        <p class="sol-desc" style="margin-bottom:1.5rem;">Cuéntanos tu reto y diseñamos la solución IA exacta que necesitas.</p>
+        <a href="https://wa.me/5215512345678?text=Tengo%20un%20desaf%C3%ADo%20espec%C3%ADfico%20y%20necesito%20ayuda%20con%20IA" target="_blank" class="btn btn-wa">
+          <span>💬</span> Cuéntanos tu reto
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- =============================================
+     TRAINING
+     ============================================= -->
+<section id="capacitaciones" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">Capacitaciones IA</p>
+      <h2 class="t-h2">Aprende a usar la IA<br>para lo que más importa</h2>
+      <p class="t-lead" style="margin-top:0.75rem;max-width:520px;">Formamos personas y equipos para que la inteligencia artificial sea una ventaja real, no solo una herramienta.</p>
+    </div>
+    <div class="grid-2">
+      <!-- Docentes -->
+      <div class="training-card training-card-1 reveal">
+        <div class="training-audience">
+          <span>🎓</span> Para Docentes
+        </div>
+        <h3 class="training-title">IA para Docentes</h3>
+        <p class="t-lead" style="font-size:0.875rem;">Transforma tu práctica docente con herramientas de IA que ahorran tiempo y potencian el aprendizaje de tus estudiantes.</p>
+        <ul class="training-objectives">
+          <li>Crear materiales educativos con IA en minutos</li>
+          <li>Diseñar evaluaciones adaptativas e inteligentes</li>
+          <li>Personalizar el aprendizaje para cada estudiante</li>
+          <li>Prompts pedagógicos avanzados y flujos de trabajo</li>
+          <li>Integrar IA en plataformas educativas existentes</li>
+        </ul>
+        <div class="training-modalities">
+          <span class="modality-tag">📍 Presencial</span>
+          <span class="modality-tag">💻 En línea</span>
+          <span class="modality-tag">🔄 Híbrido</span>
+          <span class="modality-tag">👥 Taller grupal</span>
+        </div>
+        <a href="https://wa.me/5215512345678?text=Quiero%20capacitaci%C3%B3n%20IA%20para%20docentes" target="_blank" class="btn btn-primary">Inscribirme ahora</a>
+      </div>
+      <!-- Negocios -->
+      <div class="training-card training-card-2 reveal reveal-delay-1">
+        <div class="training-audience">
+          <span>📊</span> Para Negocios e Industria
+        </div>
+        <h3 class="training-title">IA para Negocios e Industria</h3>
+        <p class="t-lead" style="font-size:0.875rem;">Equipa a tu equipo con las habilidades para implementar IA en procesos reales y generar ventajas competitivas inmediatas.</p>
+        <ul class="training-objectives">
+          <li>Identificar oportunidades de automatización con IA</li>
+          <li>Análisis de datos e inteligencia de negocios</li>
+          <li>Flujos de trabajo automatizados y productividad</li>
+          <li>Prompts para ventas, marketing y operaciones</li>
+          <li>Estrategia de adopción IA en equipos y procesos</li>
+        </ul>
+        <div class="training-modalities">
+          <span class="modality-tag">🏢 In-company</span>
+          <span class="modality-tag">💻 En línea</span>
+          <span class="modality-tag">📆 Intensivo</span>
+          <span class="modality-tag">🔁 Programa</span>
+        </div>
+        <a href="https://wa.me/5215512345678?text=Quiero%20capacitaci%C3%B3n%20IA%20para%20mi%20empresa" target="_blank" class="btn btn-primary">Solicitar programa</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- =============================================
+     PROJECTS
+     ============================================= -->
+<section id="proyectos" class="section">
+  <div class="container">
+    <div class="section-head reveal">
+      <p class="t-eyebrow">Proyectos destacados</p>
+      <h2 class="t-h2">Transformaciones reales,<br>resultados medibles</h2>
+    </div>
+    <div class="grid-3">
+      <div class="project-card reveal">
+        <div class="project-header">
+          <div class="project-sector">Educación</div>
+          <h4 class="project-title">Asistente IA para plataforma de aprendizaje</h4>
+        </div>
+        <div class="project-body">
+          <p style="font-size:0.85rem;color:rgba(242,242,242,0.6);line-height:1.6;">Chatbot pedagógico integrado a LMS institucional que resuelve dudas académicas y guía a estudiantes en su proceso de aprendizaje.</p>
+          <div class="project-stats">
+            <div class="stat-item"><div class="stat-num">3.2K</div><div class="stat-label">Consultas/mes</div></div>
+            <div class="stat-item"><div class="stat-num">94%</div><div class="stat-label">Satisfacción</div></div>
+            <div class="stat-item"><div class="stat-num">-70%</div><div class="stat-label">Carga soporte</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-header">
+          <div class="project-sector">Negocios</div>
+          <h4 class="project-title">Sistema de automatización de cotizaciones</h4>
+        </div>
+        <div class="project-body">
+          <p style="font-size:0.85rem;color:rgba(242,242,242,0.6);line-height:1.6;">Pipeline de IA que procesa solicitudes, genera cotizaciones personalizadas y las envía automáticamente integrándose al CRM existente.</p>
+          <div class="project-stats">
+            <div class="stat-item"><div class="stat-num">18h</div><div class="stat-label">Ahorradas/semana</div></div>
+            <div class="stat-item"><div class="stat-num">4min</div><div class="stat-label">Tiempo cotización</div></div>
+            <div class="stat-item"><div class="stat-num">+35%</div><div class="stat-label">Conversión</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-header">
+          <div class="project-sector">Industria</div>
+          <h4 class="project-title">Análisis predictivo de mantenimiento</h4>
+        </div>
+        <div class="project-body">
+          <p style="font-size:0.85rem;color:rgba(242,242,242,0.6);line-height:1.6;">Sistema de IA que analiza datos de sensores en tiempo real y predice necesidades de mantenimiento antes de que ocurran fallas críticas.</p>
+          <div class="project-stats">
+            <div class="stat-item"><div class="stat-num">-40%</div><div class="stat-label">Paros no planeados</div></div>
+            <div class="stat-item"><div class="stat-num">89%</div><div class="stat-label">Precisión predicción</div></div>
+            <div class="stat-item"><div class="stat-num">2.1x</div><div class="stat-label">ROI primer año</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem;" class="reveal">
+      <a href="https://wa.me/5215512345678?text=Quiero%20ver%20m%C3%A1s%20proyectos%20y%20casos%20de%20%C3%A9xito" target="_blank" class="btn btn-outline">Ver más proyectos →</a>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- =============================================
+     LABORATORIO IA
+     ============================================= -->
+<section id="laboratorio" class="section">
+  <div class="container">
+    <div class="lab-hero reveal">
+      <p class="t-eyebrow" style="margin-bottom:0.75rem;">Laboratorio IA</p>
+      <h2 class="t-h2">Centro de conocimiento<br>sobre inteligencia artificial</h2>
+      <p class="t-lead" style="margin-top:0.75rem;max-width:540px;margin-left:auto;margin-right:auto;">Recursos, guías y conocimiento aplicado para que entiendas y aproveches la IA al máximo. Acceso al conocimiento profundo.</p>
+    </div>
+    <div class="lab-grid reveal reveal-delay-1">
+      <div class="lab-item">
+        <div class="lab-category">Guías</div>
+        <div class="lab-item-title">Cómo usar ChatGPT para docentes <span class="badge-new">NUEVO</span></div>
+        <div class="lab-item-desc">Guía práctica completa con ejemplos reales de uso en el aula</div>
+        <div class="lab-arrow">→ Leer guía</div>
+      </div>
+      <div class="lab-item">
+        <div class="lab-category">Plantillas</div>
+        <div class="lab-item-title">50 prompts para negocios</div>
+        <div class="lab-item-desc">Templates listos para usar en ventas, marketing y operaciones</div>
+        <div class="lab-arrow">→ Descargar</div>
+      </div>
+      <div class="lab-item">
+        <div class="lab-category">Artículos</div>
+        <div class="lab-item-title">IA en México: estado actual 2025</div>
+        <div class="lab-item-desc">Panorama de adopción IA en empresas e instituciones mexicanas</div>
+        <div class="lab-arrow">→ Leer artículo</div>
+      </div>
+      <div class="lab-item">
+        <div class="lab-category">Recursos</div>
+        <div class="lab-item-title">Herramientas IA gratuitas esenciales</div>
+        <div class="lab-item-desc">Las mejores herramientas de IA que puedes usar sin costo</div>
+        <div class="lab-arrow">→ Ver recursos</div>
+      </div>
+      <div class="lab-item">
+        <div class="lab-category">Tendencias IA</div>
+        <div class="lab-item-title">Agentes IA: la próxima frontera</div>
+        <div class="lab-item-desc">Qué son, cómo funcionan y cómo prepararte para su llegada</div>
+        <div class="lab-arrow">→ Explorar</div>
+      </div>
+      <div class="lab-item">
+        <div class="lab-category">Casos de uso</div>
+        <div class="lab-item-title">10 usos de IA en educación que funcionan</div>
+        <div class="lab-item-desc">Casos reales documentados con resultados medibles</div>
+        <div class="lab-arrow">→ Ver casos</div>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;" class="reveal">
+      <a href="https://wa.me/5215512345678?text=Quiero%20acceder%20al%20Laboratorio%20IA%20completo" target="_blank" class="btn btn-outline">Acceder al Laboratorio completo →</a>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- =============================================
+     ABOUT
+     ============================================= -->
+<section id="nosotros" class="section">
+  <div class="container">
+    <div class="about-grid">
+      <div>
+        <div class="section-label reveal">
+          <span class="teal-line"></span>
+          <span class="t-eyebrow">Sobre MICTLÁN IA</span>
+        </div>
+        <h2 class="t-h2 reveal reveal-delay-1">Acceso al conocimiento profundo</h2>
+        <p class="t-lead reveal reveal-delay-2" style="margin-top:1rem;margin-bottom:2rem;">
+          MICTLÁN IA nace de la convicción de que la inteligencia artificial debe ser accesible y transformadora para todos. Creemos en la inteligencia que transforma, aplicamos IA para abrir puertas, resolver desafíos y crear soluciones que generen impacto real.
+        </p>
+        <div class="about-numbers reveal reveal-delay-3">
+          <div class="num-card">
+            <div class="num-big">+40</div>
+            <div class="num-label">Proyectos realizados</div>
+          </div>
+          <div class="num-card">
+            <div class="num-big">4</div>
+            <div class="num-label">Sectores atendidos</div>
+          </div>
+          <div class="num-card">
+            <div class="num-big">+200</div>
+            <div class="num-label">Personas capacitadas</div>
+          </div>
+          <div class="num-card">
+            <div class="num-big">100%</div>
+            <div class="num-label">Proyectos exitosos</div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="about-pillar reveal">
+          <div class="pillar-icon">🎯</div>
+          <div>
+            <div class="pillar-title">Propósito</div>
+            <div class="pillar-text">Democratizar el acceso a la inteligencia artificial aplicada, convirtiendo tecnología compleja en soluciones simples, poderosas y accesibles para cualquier organización o persona.</div>
+          </div>
+        </div>
+        <div class="about-pillar reveal reveal-delay-1">
+          <div class="pillar-icon">🌐</div>
+          <div>
+            <div class="pillar-title">Filosofía</div>
+            <div class="pillar-text">Creemos que la IA no es el destino, sino el vehículo. El verdadero objetivo es la transformación: de procesos, de personas, de organizaciones enteras. El conocimiento profundo es nuestra guía.</div>
+          </div>
+        </div>
+        <div class="about-pillar reveal reveal-delay-2">
+          <div class="pillar-icon">⚡</div>
+          <div>
+            <div class="pillar-title">Experiencia</div>
+            <div class="pillar-text">Equipo especializado en IA aplicada con trayectoria en educación, negocios e industria. Combinamos conocimiento técnico profundo con comprensión real de los desafíos de cada sector.</div>
+          </div>
+        </div>
+        <div class="about-pillar reveal reveal-delay-3">
+          <div class="pillar-icon">🤝</div>
+          <div>
+            <div class="pillar-title">Confianza</div>
+            <div class="pillar-text">Acompañamos a nuestros clientes en todo el proceso, desde el diagnóstico hasta la implementación y más allá. No entregamos proyectos, construimos relaciones de largo plazo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="separator"></div>
+
+<!-- =============================================
+     CONTACT FORM
+     ============================================= -->
+<section id="contacto" class="section">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label reveal">
+          <span class="teal-line"></span>
+          <span class="t-eyebrow">Contacto</span>
+        </div>
+        <h2 class="t-h2 reveal reveal-delay-1">¿Listo para transformar tu proyecto con IA?</h2>
+        <p class="t-lead reveal reveal-delay-2" style="margin-top:0.75rem;margin-bottom:2rem;">Cuéntanos tu desafío. Analizamos tu situación y te presentamos la solución más adecuada sin compromiso.</p>
+        <div class="reveal reveal-delay-2" style="display:flex;flex-direction:column;gap:1rem;">
+          <a href="https://wa.me/5215512345678" target="_blank" style="display:flex;align-items:center;gap:0.75rem;color:rgba(242,242,242,0.7);font-size:0.9rem;transition:color 0.2s;" onmouseover="this.style.color='#1DA5B1'" onmouseout="this.style.color='rgba(242,242,242,0.7)'">
+            <span style="font-size:1.1rem;">💬</span> WhatsApp: +52 155 1234 5678
+          </a>
+          <a href="mailto:contacto@mictlania.com" style="display:flex;align-items:center;gap:0.75rem;color:rgba(242,242,242,0.7);font-size:0.9rem;transition:color 0.2s;" onmouseover="this.style.color='#1DA5B1'" onmouseout="this.style.color='rgba(242,242,242,0.7)'">
+            <span style="font-size:1.1rem;">✉️</span> contacto@mictlania.com
+          </a>
+          <div style="display:flex;align-items:center;gap:0.75rem;color:rgba(242,242,242,0.5);font-size:0.9rem;">
+            <span style="font-size:1.1rem;">🇲🇽</span> Ciudad de México · México
+          </div>
+        </div>
+        <div style="margin-top:2rem;" class="reveal reveal-delay-3">
+          <a href="https://wa.me/5215512345678?text=Hola%2C%20quiero%20iniciar%20mi%20proyecto%20con%20IA" target="_blank" class="btn btn-wa" style="display:inline-flex;">
+            <span>💬</span> Escribir por WhatsApp ahora
+          </a>
+        </div>
+      </div>
+      <div class="reveal reveal-delay-1">
+        <div class="card" style="padding:2.5rem;">
+          <h3 style="font-family:var(--font-head);font-size:1.15rem;margin-bottom:1.75rem;color:var(--white);">Cuéntanos tu proyecto</h3>
+          <form onsubmit="submitForm(event)">
+            <div class="form-group">
+              <label class="form-label">Nombre completo</label>
+              <input type="text" class="form-input" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Correo electrónico</label>
+              <input type="email" class="form-input" placeholder="tu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Organización / Empresa</label>
+              <input type="text" class="form-input" placeholder="Nombre de tu empresa">
+            </div>
+            <div class="form-group">
+              <label class="form-label">¿Qué tipo de solución necesitas?</label>
+              <select class="form-input form-select">
+                <option value="">Selecciona una opción</option>
+                <option>Chatbot inteligente</option>
+                <option>Automatización de procesos</option>
+                <option>Sitio web con IA</option>
+                <option>Sistema IA personalizado</option>
+                <option>Capacitación IA</option>
+                <option>Transformación digital</option>
+                <option>Otro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Cuéntanos tu desafío</label>
+              <textarea class="form-input" placeholder="Describe brevemente tu proyecto, necesidad o reto..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+              Enviar mensaje →
+            </button>
+            <p style="font-size:0.75rem;color:rgba(242,242,242,0.35);text-align:center;margin-top:0.75rem;">También puedes escribirnos por WhatsApp para respuesta inmediata</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     CTA FINAL
+     ============================================= -->
+<section id="cta-final">
+  <div class="container">
+    <div class="cta-inner reveal">
+      <p class="t-eyebrow" style="margin-bottom:1rem;">¿Listo para transformar?</p>
+      <h2 class="cta-title">¿Buscas transformar procesos mediante IA?</h2>
+      <p class="cta-sub">Hablemos de tu proyecto. En MICTLÁN IA convertimos ideas en soluciones reales que generan impacto desde el primer día.</p>
+      <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;">
+        <a href="https://wa.me/5215512345678?text=Quiero%20transformar%20mi%20empresa%20con%20IA" target="_blank" class="btn btn-wa" style="font-size:1rem;padding:0.9rem 2.25rem;">
+          <span>💬</span> Solicitar solución IA
+        </a>
+        <a href="#soluciones" class="btn btn-outline" style="font-size:1rem;padding:0.9rem 2.25rem;">Ver soluciones</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =============================================
+     FOOTER
+     ============================================= -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div style="margin-bottom:0.75rem;">
+          <img src="mictlanlogo.png" alt="MICTLÁN IA" style="height:42px;width:auto;object-fit:contain;" />
+        </div>
+        <p class="footer-brand-desc">Soluciones inteligentes que transforman realidades. Inteligencia artificial aplicada para educación, negocios, industria y organizaciones en México.</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Soluciones</div>
+        <div class="footer-links">
+          <a href="#soluciones">Chatbots IA</a>
+          <a href="#soluciones">Automatización</a>
+          <a href="#soluciones">Sitios web IA</a>
+          <a href="#soluciones">Sistemas personalizados</a>
+          <a href="#soluciones">Transformación digital</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Empresa</div>
+        <div class="footer-links">
+          <a href="#capacitaciones">Capacitaciones</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#laboratorio">Laboratorio IA</a>
+          <a href="#nosotros">Nosotros</a>
+          <a href="#contacto">Contacto</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer-col-title">Contacto</div>
+        <div class="footer-contact">
+          <a href="https://wa.me/5215512345678" target="_blank">💬 WhatsApp</a>
+          <a href="mailto:contacto@mictlania.com">✉️ contacto@mictlania.com</a>
+        </div>
+        <div style="margin-top:1.25rem;">
+          <a href="https://wa.me/5215512345678?text=Hola%2C%20quiero%20solicitar%20informaci%C3%B3n" target="_blank" class="btn btn-wa btn-sm">💬 Escribir ahora</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-legal">
+        <a href="#">Aviso de Privacidad</a>
+        <a href="#">Términos de Uso</a>
+        <a href="#">Facturación</a>
+      </div>
+      <p class="footer-copy">© 2025 MICTLÁN IA · Todos los derechos reservados · México</p>
+    </div>
+  </div>
+</footer>
+
+<!-- =============================================
+     SCRIPTS
+     ============================================= -->
+<script>
+// NAV scroll effect
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Hamburger menu
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+hamburger.addEventListener('click', () => {
+  mobileMenu.classList.toggle('open');
+  hamburger.textContent = mobileMenu.classList.contains('open') ? '✕' : '☰';
+});
+mobileMenu.querySelectorAll('a').forEach(a => {
+  a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.textContent = '☰';
+  });
+});
+
+// Reveal on scroll
+const revealEls = document.querySelectorAll('.reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+revealEls.forEach(el => revealObserver.observe(el));
+
+// Active nav link on scroll
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.nav-links a');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(sec => {
+    if (window.scrollY >= sec.offsetTop - 120) current = sec.getAttribute('id');
+  });
+  navLinks.forEach(a => {
+    a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+  });
+});
+
+// Form submission
+function submitForm(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('[type=submit]');
+  btn.textContent = '✓ Mensaje enviado. ¡Nos contactaremos pronto!';
+  btn.style.background = '#22bfcc';
+  btn.disabled = true;
+  setTimeout(() => {
+    window.open('https://wa.me/5215512345678?text=Hola%2C%20acabo%20de%20enviar%20un%20formulario%20de%20contacto%20en%20su%20sitio%20web', '_blank');
+  }, 1000);
+}
+
+// Hero reveal on load
+window.addEventListener('load', () => {
+  document.querySelectorAll('#hero .reveal').forEach((el, i) => {
+    setTimeout(() => el.classList.add('visible'), i * 150);
+  });
+});
+</script>
+</body>
+</html>
